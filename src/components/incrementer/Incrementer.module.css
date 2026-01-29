@@ -1,0 +1,36 @@
+.incrementer {
+    display: flex;
+    gap: 2px;
+    height: 40px;
+}
+
+.incrementerButton {
+    width: 35px;
+    background-color: #2c2c2c;
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.incrementerButton:hover:not(:disabled) {
+    background-color: #404040;
+}
+
+.incrementerButton:active:not(:disabled) {
+    background-color: #1a1a1a;
+}
+
+.incrementerButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.incrementerField {
+    width: 30px;
+    text-align: right;
+
+}

@@ -1,3 +1,6 @@
+import styles from './Incrementer.module.css';
+import { Plus, Minus } from 'lucide-react';
+
 const Incrementer = ({ currentValue, updateFn }) => {
     function handleChange(newVal) {
         if (typeof newVal !== "number") {
@@ -25,11 +28,11 @@ const Incrementer = ({ currentValue, updateFn }) => {
     }
 
     return (
-        <div>
-            <button type="button" aria-label="Decrement Quantity" onClick={() => handleChange(Number(currentValue - 1))}>-</button>
-            <input type="text" inputMode="numeric" pattern="^$|^[1-9]\d*$" value={currentValue} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} aria-label="Quantity" />
-            <button type="button" aria-label="Increment Quantity" onClick={() => handleChange(Number(currentValue + 1))}>+</button>
-        </div>
+        <div className={styles.incrementer}>
+            <button className={styles.incrementerButton} type="button" aria-label="Decrement Quantity" onClick={() => handleChange(Number(currentValue - 1))} disabled={currentValue <= 1 || currentValue === ""}><Minus color='white' /></button>
+            <input className={styles.incrementerField} type="text" inputMode="numeric" pattern="^$|^[1-9]\d*$" value={currentValue} onChange={(e) => handleChange(e.target.value)} onKeyDown={handleKeyDown} aria-label="Quantity" />
+            <button className={styles.incrementerButton} type="button" aria-label="Increment Quantity" onClick={() => handleChange(Number(currentValue + 1))}><Plus color='white' /></button>
+        </div >
     )
 }
 

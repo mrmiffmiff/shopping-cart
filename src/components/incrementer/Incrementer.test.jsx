@@ -61,7 +61,7 @@ describe("Incrementer", () => {
         const mockUpdateFn = vi.fn();
         render(<Incrementer currentValue={5} updateFn={mockUpdateFn} />);
 
-        const incrementButton = screen.getByLabelText("Increment Quantity");
+        const incrementButton = screen.getByRole("button", { name: /Increment Quantity/i });
         await user.click(incrementButton);
 
         expect(mockUpdateFn).toHaveBeenCalledWith(6);
@@ -72,7 +72,7 @@ describe("Incrementer", () => {
         const mockUpdateFn = vi.fn();
         render(<Incrementer currentValue={5} updateFn={mockUpdateFn} />);
 
-        const decrementButton = screen.getByLabelText("Decrement Quantity");
+        const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
         await user.click(decrementButton);
 
         expect(mockUpdateFn).toHaveBeenCalledWith(4);
@@ -83,7 +83,7 @@ describe("Incrementer", () => {
         const mockUpdateFn = vi.fn();
         render(<Incrementer currentValue={1} updateFn={mockUpdateFn} />);
 
-        const decrementButton = screen.getByLabelText("Decrement Quantity");
+        const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
         await user.click(decrementButton);
 
         expect(mockUpdateFn).not.toHaveBeenCalled();
@@ -147,5 +147,29 @@ describe("Incrementer", () => {
         await user.keyboard("{ArrowDown}");
 
         expect(mockUpdateFn).not.toHaveBeenCalled();
+    });
+
+    it("disables the decrement button when value is 1", () => {
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue={1} updateFn={mockUpdateFn} />);
+
+        const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
+        expect(decrementButton).toBeDisabled();
+    });
+
+    it("disables the decrement button when value is empty", () => {
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue="" updateFn={mockUpdateFn} />);
+
+        const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
+        expect(decrementButton).toBeDisabled();
+    });
+
+    it("enables the decrement button when value is greater than 1", () => {
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue={5} updateFn={mockUpdateFn} />);
+
+        const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
+        expect(decrementButton).toBeEnabled();
     });
 });
