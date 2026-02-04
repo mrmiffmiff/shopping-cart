@@ -1,15 +1,15 @@
-import { useState } from 'react'
 import './App.css'
-import Incrementer from './components/incrementer/Incrementer'
+import ProductCard from './components/productCard/ProductCard'
 
 function App() {
-  const [incrementerVal, setIncrementerVal] = useState(1)
 
   return (
     <div className="appSample">
-      <Incrementer
-        currentValue={incrementerVal}
-        updateFn={setIncrementerVal}
+      <ProductCard
+        itemId={1}
+        itemName={"Sample Name of Product"}
+        itemPrice={3.45}
+        addToCartFunc={(id, amount) => console.log(`${id}: ${amount}`)}
       />
     </div>
   )

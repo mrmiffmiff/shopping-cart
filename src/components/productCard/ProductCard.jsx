@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.css';
 import Incrementer from '../incrementer/Incrementer';
+import Placeholder from '../../assets/images/Placeholder.png'
 
 const ProductCard = ({ itemId, itemName, itemImgUrl, itemPrice, addToCartFunc }) => {
     const [amount, setAmount] = useState(1);
@@ -11,15 +12,17 @@ const ProductCard = ({ itemId, itemName, itemImgUrl, itemPrice, addToCartFunc })
     }).format(itemPrice);
 
     return (
-        <div>
-            <img src={itemImgUrl || '../../assets/images/Placeholder.png'} alt="" /> {/*Empty alt because this is presentational. Blind user doesn't need a description, name is sufficient.*/}
-            <h3>{itemName}</h3>
-            <h4>{formattedPrice}</h4>
-            <button type='button' onClick={() => addToCartFunc(itemId, amount)}>Add to Cart</button>
-            <Incrementer
-                currentValue={amount}
-                updateFn={setAmount}
-            />
+        <div className={styles.card}>
+            <img src={itemImgUrl || Placeholder} alt="" className={styles.picture} /> {/*Empty alt because this is presentational. Blind user doesn't need a description, name is sufficient.*/}
+            <h3 className={styles.name}>{itemName}</h3>
+            <h4 className={styles.price}>{formattedPrice}</h4>
+            <div className={styles.interactionManager}>
+                <button type='button' onClick={() => addToCartFunc(itemId, amount)} className={styles.addButton}>Add to Cart</button>
+                <Incrementer
+                    currentValue={amount}
+                    updateFn={setAmount}
+                />
+            </div>
         </div>
     )
 }
