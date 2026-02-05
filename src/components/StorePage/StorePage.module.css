@@ -1,0 +1,8 @@
+.store {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 80px 24px 40px;
+}

@@ -1,18 +1,14 @@
 import './App.css'
 import ProductCard from './components/productCard/ProductCard'
+import StorePage from './components/StorePage/StorePage'
 
 function App() {
 
   return (
-    <div className="appSample">
-      <ProductCard
-        itemId={1}
-        itemName={"Sample Name of Product"}
-        itemPrice={3.45}
-        addToCartFunc={(id, amount) => console.log(`${id}: ${amount}`)}
-      />
-    </div>
+    <StorePage
+      addToCartFunc={(id, amount) => console.log(`${id}: ${amount}`)}
+    />
   )
 }
 
-export default App
+export default App;

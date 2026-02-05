@@ -172,4 +172,22 @@ describe("Incrementer", () => {
         const decrementButton = screen.getByRole("button", { name: /Decrement Quantity/i });
         expect(decrementButton).toBeEnabled();
     });
+
+    it("uses product-specific aria-labels when itemName is provided", () => {
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue={5} updateFn={mockUpdateFn} itemName="Widget" />);
+
+        expect(screen.getByRole("button", { name: "Decrement Widget Quantity" })).toBeInTheDocument();
+        expect(screen.getByRole("textbox", { name: "Widget Quantity" })).toBeInTheDocument();
+        expect(screen.getByRole("button", { name: "Increment Widget Quantity" })).toBeInTheDocument();
+    });
+
+    it("uses generic aria-labels when itemName is not provided", () => {
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue={5} updateFn={mockUpdateFn} />);
+
+        expect(screen.getByRole("button", { name: "Decrement Quantity" })).toBeInTheDocument();
+        expect(screen.getByRole("textbox", { name: "Quantity" })).toBeInTheDocument();
+        expect(screen.getByRole("button", { name: "Increment Quantity" })).toBeInTheDocument();
+    });
 });

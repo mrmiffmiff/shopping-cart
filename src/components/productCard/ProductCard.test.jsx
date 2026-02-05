@@ -49,7 +49,7 @@ describe("Product Card", () => {
         />
         );
 
-        const addButton = screen.getByRole("button", { name: /Add to Cart/i });
+        const addButton = screen.getByRole("button", { name: /Add Test Name to Cart/i });
 
         await user.click(addButton);
 
@@ -69,8 +69,8 @@ describe("Product Card", () => {
         />
         );
 
-        const addButton = screen.getByRole("button", { name: /Add to Cart/i });
-        const incrementButton = screen.getByRole("button", { name: /Increment Quantity/i });
+        const addButton = screen.getByRole("button", { name: /Add Test Name to Cart/i });
+        const incrementButton = screen.getByRole("button", { name: /Increment Test Name Quantity/i });
 
         await user.click(incrementButton);
         await user.click(incrementButton);

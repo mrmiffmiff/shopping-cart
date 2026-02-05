@@ -1,3 +1,14 @@
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .card {
     width: 100%;
     max-width: 400px;
@@ -9,11 +20,20 @@
     border: 1px solid #c9c5c0;
     border-radius: 10px;
     padding: 16px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    animation: cardEntrance 0.4s ease-out both;
 }
 
 .card:hover {
     background-color: #dfdbd6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        animation: none;
+    }
 }
 
 .picture {

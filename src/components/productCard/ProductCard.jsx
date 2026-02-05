@@ -11,19 +11,22 @@ const ProductCard = ({ itemId, itemName, itemImgUrl, itemPrice, addToCartFunc })
         currency: 'USD'
     }).format(itemPrice);
 
+    const nameId = `product-name-${itemId}`;
+
     return (
-        <div className={styles.card}>
+        <article className={styles.card} aria-labelledby={nameId}>
             <img src={itemImgUrl || Placeholder} alt="" className={styles.picture} /> {/*Empty alt because this is presentational. Blind user doesn't need a description, name is sufficient.*/}
-            <h3 className={styles.name}>{itemName}</h3>
-            <h4 className={styles.price}>{formattedPrice}</h4>
+            <h3 id={nameId} className={styles.name}>{itemName}</h3>
+            <h4 className={styles.price} aria-label={`${itemName} price: ${formattedPrice}`}>{formattedPrice}</h4>
             <div className={styles.interactionManager}>
-                <button type='button' onClick={() => addToCartFunc(itemId, amount)} className={styles.addButton}>Add to Cart</button>
+                <button type='button' onClick={() => addToCartFunc(itemId, amount)} className={styles.addButton} aria-label={`Add ${itemName} to Cart`}>Add to Cart</button>
                 <Incrementer
                     currentValue={amount}
                     updateFn={setAmount}
+                    itemName={itemName}
                 />
             </div>
-        </div>
+        </article>
     )
 }
 
