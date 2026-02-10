@@ -1,8 +1,10 @@
 import styles from './StorePage.module.css';
 import ProductCard from '../productCard/ProductCard';
 import useFakeStoreItems from '../../hooks/useFakeStoreItems';
+import { useOutletContext } from 'react-router';
 
-const StorePage = ({ addToCartFunc }) => {
+const StorePage = () => {
+    const { addItemToCart } = useOutletContext();
     const { itemData, loading, error } = useFakeStoreItems();
 
     if (loading) return <p>Loading...</p>;
@@ -15,7 +17,7 @@ const StorePage = ({ addToCartFunc }) => {
             itemName={item.name}
             itemImgUrl={item.url}
             itemPrice={item.price}
-            addToCartFunc={addToCartFunc}
+            addToCartFunc={addItemToCart}
         />
     );
 
