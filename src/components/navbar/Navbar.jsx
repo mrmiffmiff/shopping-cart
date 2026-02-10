@@ -10,9 +10,14 @@ const Navbar = ({ numItems }) => {
             <Link
                 to={{ pathname: "/cart" }}
                 className={styles.cartlink}
-                aria-label="Shopping cart"
+                aria-label={numItems > 0 ? `Shopping cart, ${numItems} items` : "Shopping cart"}
             >
                 <ShoppingCart color="#6b6b6b" />
+                {numItems > 0 && (
+                    <span className={styles.badge} aria-hidden="true" data-testid="cart-badge">
+                        {numItems}
+                    </span>
+                )}
             </Link>
         </nav>
     );
