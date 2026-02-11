@@ -190,4 +190,27 @@ describe("Incrementer", () => {
         expect(screen.getByRole("textbox", { name: "Quantity" })).toBeInTheDocument();
         expect(screen.getByRole("button", { name: "Increment Quantity" })).toBeInTheDocument();
     });
+
+    it("calls onBlur callback when input loses focus", async () => {
+        const user = userEvent.setup();
+        const mockUpdateFn = vi.fn();
+        const mockOnBlur = vi.fn();
+        render(<Incrementer currentValue={5} updateFn={mockUpdateFn} onBlur={mockOnBlur} />);
+
+        const input = screen.getByRole("textbox", { name: /Quantity/i });
+        await user.click(input);
+        await user.tab();
+
+        expect(mockOnBlur).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not error when onBlur is not provided", async () => {
+        const user = userEvent.setup();
+        const mockUpdateFn = vi.fn();
+        render(<Incrementer currentValue={5} updateFn={mockUpdateFn} />);
+
+        const input = screen.getByRole("textbox", { name: /Quantity/i });
+        await user.click(input);
+        await user.tab();
+    });
 });
