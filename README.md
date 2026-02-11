@@ -1,16 +1,15 @@
-# React + Vite
+# GreatShop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a project for The Odin Project's React course demonstrating ability with [React Router](https://reactrouter.com/) and general SPA functionality, [Vitest](https://vitest.dev/) and [associated](https://testing-library.com/) [packages](https://github.com/testing-library/jest-dom), and [CSS Modules](https://github.com/css-modules/css-modules). It's essentially a sample of an e-commerce type shopping page, complete with a home page, a catalog, and a cart. There's obviously no purchasing so that's where it ends.
 
-Currently, two official plugins are available:
+The incrementer (used both on the cards in the store page and on the items in the cart) is notable for actually containing a text field, not a number field; certain aspects of type="number" were implemented manually, but there was too much baggage associated with type="number" that made certain things very difficult to match the intended functionality. You can still use the up and down arrow keys on the keyboard to change numbers (within proper ranges) though.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With the exception of the error page, there is a universal sticky navbar that will hopefully make your life easier.
 
-## React Compiler
+The picture on the home page is a stock photo from [Picsum](https://picsum.photos/). I don't intend to replace it.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All items in the shop are pulled from the [Fake Store API](https://fakestoreapi.com/). Check it out, as it may be helpful for your projects.
 
-## Expanding the ESLint configuration
+Certain icons come from the [Lucide](https://lucide.dev/) icon component library.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Project is &copy; Robert Eisenman, 2026
